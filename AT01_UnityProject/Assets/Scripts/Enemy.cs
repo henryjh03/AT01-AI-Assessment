@@ -75,6 +75,52 @@ public class Enemy : MonoBehaviour
 
     //Implement DFS algorithm method here
 
+
+    //Variable for 'Node currently being searched'
+    private Node nodeBeingSearched;
+
+    //Boolean for 'target found'
+    private bool targetFound; 
+
+    //list of type 'Node' storing 'unsearched Nodes' (this is your stack)
+    private List<Node> nodes;
+
+    //set 'target found' false
+    void DFSsearch()
+    {
+        targetFound = false;
+
+        while ()
+        {
+
+        }
+    }
+
+    //assign GameManager.Instance.Nodes[0] to your 'unseached Nodes' list
+    
+    //loop starts here
+    //while target is false, continue the loop
+    
+    //1. take last in 'unsearched node' list and assign it to 'Node currently being searched'
+
+    //2. check if 'Node currently being searched' is the same as *either*
+        //the target Node of the Player (Node they are heading towards)
+        //the current Node of the Player (the last Node they visited)
+    //if this is true ('Node currently being searched' is the one we want):
+        //assign 'Node currently being searched' as 'currentNode'
+        //break the loop and finish this method
+    //if it isn't true continue 
+
+    //3. use a for loop to add each child of 'Node currently being searched' to 'unsearched Nodes' list
+
+    //4. remove 'Node currently being searched' from 'unsearched Nodes' list
+
+
+
+
+
+
+
     //access the nodes on gamemanager
     //add GameManager.Instance.Nodes[0] to a list of unsearched nodes (root node)
     //check if root node is the same as GameManager.Instance.Player.Targetnode/Currentnode
