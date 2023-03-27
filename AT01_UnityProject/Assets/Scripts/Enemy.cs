@@ -76,25 +76,48 @@ public class Enemy : MonoBehaviour
     //Implement DFS algorithm method here
 
 
-    //Variable for 'Node currently being searched'
-    private Node nodeBeingSearched;
-
+    //Variable for 'Node currently being searched' 
+    private Node currentNodeSearch;
     //Boolean for 'target found'
-    private bool targetFound; 
-
+    private bool targetFound = false;
     //list of type 'Node' storing 'unsearched Nodes' (this is your stack)
-    private List<Node> nodes;
+    private List<Node> unsearchedNodes = new List<Node>();
 
-    //set 'target found' false
-    void DFSsearch()
+    public object Player;
+    Player playerScript;
+    private void Awake()
     {
+        playerScript = gameObject.GetComponent<Player>();
+    }
+
+    void DFS()
+    {
+        //set 'target found' false
         targetFound = false;
+        unsearchedNodes.Add(GameManager.Instance.Nodes[0]);
 
-        while ()
+        while (!targetFound)
         {
+            currentNodeSearch = unsearchedNodes[unsearchedNodes.Count - 1];
 
+            if (currentNodeSearch == playerScript.TargetNode || currentNodeSearch == playerScript.CurrentNode)
+            {
+                currentNode = currentNodeSearch;
+                targetFound = true;
+                break;
+            }
+
+            for (int i = 0; i < currentNodeSearch.Children.Length; i++)
+            {
+                unsearchedNodes.Add(currentNodeSearch.Children[i]);
+            }
+
+            unsearchedNodes.Remove(currentNodeSearch);
         }
     }
+}
+
+
 
     //assign GameManager.Instance.Nodes[0] to your 'unseached Nodes' list
     
@@ -129,4 +152,4 @@ public class Enemy : MonoBehaviour
     //remove the node being searched from list of unserached nodes
     //assign the node at the 'top' (last postion of the unserached list) as the node being searched
     //go back to line 74
-}
+
